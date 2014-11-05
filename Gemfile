@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use postgresql as the database for Active Record
@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
+gem "spring-commands-rspec", group: :development
 
 # Devise for logins
 gem 'devise'
@@ -47,3 +48,5 @@ gem 'omniauth-facebook'
 gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
 gem 'rspec-collection_matchers', group: :test
+gem 'poltergeist', group: :test
+gem 'database_cleaner', group: :test

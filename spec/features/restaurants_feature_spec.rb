@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe 'restaurants' do
+
+  before do
+    sign_up
+  end
+
   context 'no restaurants have been added' do
       it 'should display a prompt to add a restaurant' do
       visit '/restaurants'
@@ -23,6 +28,11 @@ describe 'restaurants' do
 end
 
 describe 'creating restaurants' do
+
+  before do
+    sign_up
+  end
+
  it 'prompts user to fill out a form, then displays the new restaurant' do
   visit '/restaurants'
   click_link 'Add a restaurant'
@@ -33,6 +43,7 @@ describe 'creating restaurants' do
  end
 
  context 'an invalid restaurant' do
+
     it 'does not let you submit a name that is too short' do
       visit '/restaurants'
       click_link 'Add a restaurant'
@@ -47,6 +58,7 @@ end
 context 'viewing restaurants' do
 
   before do
+    sign_up
     @kfc = Restaurant.create(name:'KFC')
   end
 
@@ -61,6 +73,7 @@ end
 context 'editing restaurants' do
 
   before do
+    sign_up
     Restaurant.create(name:'KFC')
   end
 
@@ -78,6 +91,7 @@ end
 describe 'deleting restaurants' do
 
   before do
+    sign_up
     Restaurant.create(:name => "KFC")
   end
 
@@ -88,4 +102,13 @@ describe 'deleting restaurants' do
     expect(page).to have_content 'Restaurant deleted successfully'
   end
 
+end
+
+def sign_up
+    visit('/')
+    click_link('Sign up')
+    fill_in('Email', with: 'test@example.com')
+    fill_in('Password', with: 'testtest')
+    fill_in('Password confirmation', with: 'testtest')
+    click_button('Sign up')
 end
