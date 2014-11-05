@@ -6,7 +6,7 @@ describe 'restaurants' do
     sign_up
   end
 
-  context 'no restaurants have been added' do
+  context 'no restaurants have been added', focus: true do
       it 'should display a prompt to add a restaurant' do
       visit '/restaurants'
       expect(page).to have_content 'No restaurants'
